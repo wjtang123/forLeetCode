@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 public class CommonSkillsOfJava {
     public static void main(String[] args) {
         int[] nums = new int[]{1,2,3,4,5,6};
-        // int[] 转 List， Set；
+        // int[] 转 List， Set；(基础类型，非基础类型为 Arrays.asList(arrName))
         List<Integer> list = Arrays.stream(nums).boxed().toList();
         Set<Integer> set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
-        // 打印 int[], list, set
+        // 打印 int[], list, set (基础类型，非基础类型为 list.toArray(new 类型[0]), 例如 list.toArray(new int[0][])， list.toArray(new MyClass[0]);)
         System.out.println(Arrays.toString(nums));
         System.out.println(list);
         System.out.println(set);
@@ -57,5 +57,20 @@ public class CommonSkillsOfJava {
         while(!maxHeapOfArrayLambda.isEmpty()) {
             System.out.println(Arrays.toString(maxHeapOfArrayLambda.poll()));
         }
+
+        int[][] twoDArray = new int[3][2];
+        twoDArray[0] = a1;
+        twoDArray[1] = a2;
+        twoDArray[2] = a3;
+
+        // int[][] 转换为 List
+        List<int[]> list1 = Arrays.asList(twoDArray);
+        System.out.println(Arrays.toString(list1.get(0)));
+
+        // List 转换为 int[][]
+        // 0只是个象征，最终还是会按照真实的长度来给Array赋予长度的
+        // 如果是其他类型，例如list.toArray(new MyClass[0]);
+        int[][] twoDArray1 = list1.toArray(new int[0][]);
+        System.out.println(Arrays.toString(twoDArray1[1]));
     }
 }
